@@ -1,30 +1,17 @@
 {
   "SGN": {
-    "airport_code": "SGN",
+    "code": "SGN",
     "name": "Tan Son Nhat International",
-    "city": "Ho Chi Minh City",
-    "country": "Vietnam",
-    "lounges": ["CIP Orchid", "Le Saigonnais"]
+    "city": "Ho Chi Minh City"
   },
   "HAN": {
-    "airport_code": "HAN",
+    "code": "HAN",
     "name": "Noi Bai International",
-    "city": "Hanoi",
-    "country": "Vietnam",
-    "lounges": ["Song Hong Business", "Noi Bai Premium"]
+    "city": "Hanoi"
   },
   "DAD": {
-    "airport_code": "DAD",
+    "code": "DAD",
     "name": "Da Nang International",
-    "city": "Da Nang",
-    "country": "Vietnam",
-    "lounges": ["CIP Lounge"]
-  },
-  "PQC": {
-    "airport_code": "PQC",
-    "name": "Phu Quoc International",
-    "city": "Phu Quoc",
-    "country": "Vietnam",
-    "lounges": ["Pearl Lounge"]
+    "city": "Da Nang"
   }
 }

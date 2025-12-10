@@ -234,7 +234,7 @@ async function executeMCPTool(toolName, args) {
            ORDER BY f.departure_time`,
           [args.from_airport?.toUpperCase(), args.to_airport?.toUpperCase()]
         );
-        return result.rows;
+        return { alternatives: result.rows };
       }
 
       case 'calculate_compensation': {
@@ -309,6 +309,10 @@ app.get('/api/health', async (req, res) => {
 app.post('/api/chat', async (req, res) => {
   const { message, history = [] } = req.body;
   const logs = [];
+
+  if (!message || typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ error: 'Message cannot be empty' });
+  }
 
   const addLog = (agent, action, details, type) => {
     logs.push({ agent, action, details, type, time: new Date().toISOString() });
@@ -457,6 +461,27 @@ app.get('/api/flights', async (req, res) => {
       ORDER BY f.departure_time
     `);
     res.json(result.rows);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/flights/:code', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const result = await pool.query(`
+      SELECT f.*, a1.city as from_city, a2.city as to_city
+      FROM flights f
+      JOIN airports a1 ON f.from_airport = a1.airport_code
+      JOIN airports a2 ON f.to_airport = a2.airport_code
+      WHERE f.flight_code = $1
+    `, [code.toUpperCase()]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Flight not found' });
+    }
+
+    res.json(result.rows[0]);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

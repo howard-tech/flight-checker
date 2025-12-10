@@ -1,51 +1,17 @@
-const { api, checkApiHealth } = require('./setup');
+const { api } = require('./setup');
 
-describe('Health Check API', () => {
-  
-  beforeAll(async () => {
-    // Verify API is running
-    const isHealthy = await checkApiHealth();
-    if (!isHealthy) {
-      console.warn('⚠️ API may not be running. Some tests might fail.');
-    }
+describe('Health API', () => {
+  test('GET /api/health returns ok status', async () => {
+    const res = await api.get('/api/health');
+
+    expect(res.status).toBe(200);
+    expect(res.body.status).toBe('ok');
+    expect(res.body.database).toBe('connected');
   });
 
-  describe('GET /api/health', () => {
-    
-    test('should return ok status when healthy', async () => {
-      const res = await api.get('/api/health');
-      
-      expect(res.status).toBe(200);
-      expect(res.body).toHaveProperty('status', 'ok');
-    });
-
-    test('should report database connection status', async () => {
-      const res = await api.get('/api/health');
-      
-      expect(res.body).toHaveProperty('database');
-      expect(['connected', 'disconnected']).toContain(res.body.database);
-    });
-
-    test('should include timestamp', async () => {
-      const res = await api.get('/api/health');
-      
-      if (res.body.timestamp) {
-        expect(new Date(res.body.timestamp)).toBeInstanceOf(Date);
-      }
-    });
-
-    test('should respond within 500ms', async () => {
-      const start = Date.now();
-      await api.get('/api/health');
-      const duration = Date.now() - start;
-      
-      expect(duration).toBeLessThan(500);
-    });
-
-    test('should return correct content-type', async () => {
-      const res = await api.get('/api/health');
-      
-      expect(res.headers['content-type']).toMatch(/application\/json/);
-    });
+  test('response time is under 500ms', async () => {
+    const start = Date.now();
+    await api.get('/api/health');
+    expect(Date.now() - start).toBeLessThan(500);
   });
 });

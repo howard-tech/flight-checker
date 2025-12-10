@@ -4,57 +4,18 @@
     "airline": "Vietnam Airlines",
     "from_airport": "SGN",
     "to_airport": "HAN",
-    "departure_time": "08:00",
-    "arrival_time": "10:15",
-    "status": "On Time",
-    "gate": "A1",
-    "terminal": "T1",
-    "aircraft": "A321",
-    "price": 2500000,
-    "delay_minutes": 0
+    "status": "On Time"
   },
   "delayed": {
     "flight_code": "VN456",
     "airline": "Vietnam Airlines",
-    "from_airport": "SGN",
-    "to_airport": "DAD",
-    "departure_time": "09:30",
-    "arrival_time": "10:45",
     "status": "Delayed",
-    "gate": "B3",
-    "terminal": "T1",
-    "aircraft": "A320",
-    "price": 1800000,
     "delay_minutes": 45,
     "delay_reason": "Weather conditions"
   },
   "cancelled": {
     "flight_code": "QH101",
     "airline": "Bamboo Airways",
-    "from_airport": "HAN",
-    "to_airport": "PQC",
-    "departure_time": "14:00",
-    "arrival_time": "16:30",
-    "status": "Cancelled",
-    "gate": null,
-    "terminal": "T2",
-    "aircraft": "A321",
-    "price": 2200000,
-    "delay_minutes": 0,
-    "delay_reason": "Technical issues"
-  },
-  "vietjet": {
-    "flight_code": "VJ201",
-    "airline": "VietJet Air",
-    "from_airport": "DAD",
-    "to_airport": "SGN",
-    "departure_time": "11:00",
-    "arrival_time": "12:15",
-    "status": "On Time",
-    "gate": "C2",
-    "terminal": "T1",
-    "aircraft": "A320",
-    "price": 1500000,
-    "delay_minutes": 0
+    "status": "Cancelled"
   }
 }
