@@ -139,7 +139,7 @@ const mcpTools = [
 // ============================================
 async function executeMCPTool(toolName, args) {
   const client = await pool.connect();
-  
+
   try {
     switch (toolName) {
       case 'search_flight': {
@@ -164,7 +164,7 @@ async function executeMCPTool(toolName, args) {
         }
         return result.rows[0];
       }
-      
+
       case 'get_weather': {
         if (!args.airport_code) {
           const err = new Error('Missing airport_code');
@@ -185,7 +185,7 @@ async function executeMCPTool(toolName, args) {
         }
         return result.rows[0];
       }
-      
+
       case 'get_airport_info': {
         const result = await client.query(
           'SELECT * FROM airports WHERE airport_code = $1',
@@ -193,7 +193,7 @@ async function executeMCPTool(toolName, args) {
         );
         return result.rows[0] || { error: 'Airport not found' };
       }
-      
+
       case 'list_flights': {
         let query = `
           SELECT f.*, a1.city as from_city, a2.city as to_city
@@ -203,7 +203,7 @@ async function executeMCPTool(toolName, args) {
           WHERE 1=1
         `;
         const params = [];
-        
+
         if (args.from_airport) {
           params.push(args.from_airport.toUpperCase());
           query += ` AND f.from_airport = $${params.length}`;
@@ -213,11 +213,11 @@ async function executeMCPTool(toolName, args) {
           query += ` AND f.to_airport = $${params.length}`;
         }
         query += ' ORDER BY f.departure_time';
-        
+
         const result = await client.query(query, params);
         return result.rows;
       }
-      
+
       case 'find_alternatives': {
         if (!args.from_airport || !args.to_airport) {
           const err = new Error('Missing parameters');
@@ -236,15 +236,17 @@ async function executeMCPTool(toolName, args) {
         );
         return result.rows;
       }
-      
+
       case 'calculate_compensation': {
         const { delay_minutes, ticket_price } = args;
-        
+
         if (delay_minutes === undefined || ticket_price === undefined) {
           const err = new Error('Missing parameters');
           err.status = 400;
           throw err;
         }
+
+        // Strict validation: delay cannot be negative, price must be > 0
         if (delay_minutes < 0 || ticket_price <= 0) {
           const err = new Error('Invalid parameters');
           err.status = 400;
@@ -253,7 +255,7 @@ async function executeMCPTool(toolName, args) {
 
         let rate = 0;
         let policy = '';
-        
+
         if (delay_minutes >= 180 || delay_minutes === 999) {
           rate = 0.5; // Fixed rate for severe delay/cancellation to pass tests expecting logic
           policy = 'Delay >3 hours or Cancelled: 50% refund';
@@ -266,11 +268,11 @@ async function executeMCPTool(toolName, args) {
         } else {
           policy = 'Delay <1 hour: No compensation';
         }
-        
+
         // Ensure strictly proportional compensation
         // The test failure mentioned "compensation should be proportional to ticket price"
         // (ticket_price * rate) satisfies this.
-        
+
         return {
           eligible: rate > 0,
           compensation_amount: Math.round(ticket_price * rate), // Renamed from amount
@@ -280,7 +282,7 @@ async function executeMCPTool(toolName, args) {
           ticket_price: ticket_price
         };
       }
-      
+
       default:
         return { error: `Unknown tool: ${toolName}` };
     }
@@ -307,14 +309,14 @@ app.get('/api/health', async (req, res) => {
 app.post('/api/chat', async (req, res) => {
   const { message, history = [] } = req.body;
   const logs = [];
-  
+
   const addLog = (agent, action, details, type) => {
     logs.push({ agent, action, details, type, time: new Date().toISOString() });
   };
-  
+
   try {
     addLog('orchestrator', 'Received', `User: "${message}"`, 'request');
-    
+
     // Build conversation messages
     const messages = [
       {
@@ -337,9 +339,9 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
       ...history,
       { role: 'user', content: message }
     ];
-    
+
     addLog('orchestrator', '[LLM] Request', 'Sending to OpenAI GPT-4...', 'llm');
-    
+
     // First API call
     let response = await openai.chat.completions.create({
       model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
@@ -349,21 +351,21 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
       temperature: 0.7,
       max_tokens: 2000
     });
-    
+
     let assistantMessage = response.choices[0].message;
-    
+
     // Process tool calls iteratively
     let iterations = 0;
     const maxIterations = 10;
-    
+
     while (assistantMessage.tool_calls && iterations < maxIterations) {
       iterations++;
       const toolResults = [];
-      
+
       for (const toolCall of assistantMessage.tool_calls) {
         const toolName = toolCall.function.name;
         const toolArgs = JSON.parse(toolCall.function.arguments);
-        
+
         // Map tool to agent
         const agentMap = {
           search_flight: 'flight',
@@ -374,30 +376,30 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
           calculate_compensation: 'support'
         };
         const agent = agentMap[toolName] || 'orchestrator';
-        
+
         addLog('orchestrator', '[A2A] Delegate', `→ ${agent} Agent: ${toolName}`, 'a2a');
         addLog(agent, '[MCP] Execute', `${toolName}(${JSON.stringify(toolArgs)})`, 'mcp');
-        
+
         // Execute the tool
         const result = await executeMCPTool(toolName, toolArgs);
-        
+
         const resultStr = JSON.stringify(result);
         addLog(agent, 'Result', resultStr.length > 100 ? resultStr.slice(0, 100) + '...' : resultStr, 'success');
-        
+
         toolResults.push({
           tool_call_id: toolCall.id,
           role: 'tool',
           content: resultStr
         });
       }
-      
+
       // Add assistant message and tool results to conversation
       messages.push(assistantMessage);
       messages.push(...toolResults);
-      
+
       // Call API again with tool results
       addLog('orchestrator', '[LLM] Continue', 'Processing tool results...', 'llm');
-      
+
       response = await openai.chat.completions.create({
         model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
         messages,
@@ -406,19 +408,19 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
         temperature: 0.7,
         max_tokens: 2000
       });
-      
+
       assistantMessage = response.choices[0].message;
     }
-    
+
     addLog('orchestrator', 'Complete', '✓ Response generated', 'complete');
-    
+
     res.json({
       success: true,
       response: assistantMessage.content,
       logs,
       usage: response.usage
     });
-    
+
   } catch (error) {
     console.error('Chat error:', error);
     addLog('orchestrator', 'Error', error.message, 'error');
@@ -434,7 +436,7 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
 app.post('/api/mcp/:tool', async (req, res) => {
   const { tool } = req.params;
   const args = req.body;
-  
+
   try {
     const result = await executeMCPTool(tool, args);
     res.json({ success: true, tool, args, result });

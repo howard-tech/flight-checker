@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 
 // Helper functions
 async function waitForAIResponse(page: Page, timeout = 30000) {
-  await page.waitForSelector('[class*="assistant"], [class*="message"]:not([class*="user"])', {
+  await page.waitForSelector('[data-testid="message-assistant"]', {
     timeout,
     state: 'visible'
   });
@@ -10,16 +10,16 @@ async function waitForAIResponse(page: Page, timeout = 30000) {
 }
 
 async function sendMessage(page: Page, message: string) {
-  await page.fill('input[type="text"], input[placeholder*="nhập"], textarea', message);
-  await page.click('button[type="submit"], button:has-text("Gửi"), button:has-text("Send")');
+  await page.fill('[data-testid="chat-input"]', message);
+  await page.click('[data-testid="chat-submit"]');
 }
 
 test.describe('Weather Query E2E Tests', () => {
-  
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    await page.waitForSelector('input', { timeout: 15000 });
+    await page.waitForSelector('[data-testid="chat-input"]', { timeout: 15000 });
   });
 
   test('should query weather for Hanoi in Vietnamese', async ({ page }) => {
@@ -82,10 +82,10 @@ test.describe('Weather Query E2E Tests', () => {
 });
 
 test.describe('Weather Query - Different Formats', () => {
-  
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.waitForSelector('input', { timeout: 15000 });
+    await page.waitForSelector('[data-testid="chat-input"]', { timeout: 15000 });
   });
 
   test('should understand airport code format', async ({ page }) => {
