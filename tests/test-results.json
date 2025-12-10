@@ -1,0 +1,1214 @@
+{
+  "config": {
+    "configFile": "/Users/hungnguyen/Downloads/flight-checker/tests/playwright.config.ts",
+    "rootDir": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": {
+      "command": "echo \"Ensure flight-checker is running on ports 3001 and 5173\"",
+      "url": "http://localhost:5173",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "flight-search.spec.ts",
+      "file": "flight-search.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Flight Search E2E Tests",
+          "file": "flight-search.spec.ts",
+          "line": 19,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display welcome message on load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1099,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T05:56:28.844Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-69f8354096bfe0710d9f",
+              "file": "flight-search.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "should have input field and submit button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 888,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T05:56:30.565Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-d3613c97f4d6172cef26",
+              "file": "flight-search.spec.ts",
+              "line": 33,
+              "column": 7
+            },
+            {
+              "title": "should search flight VN123 - On Time",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30403,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                            "column": 14,
+                            "line": 5
+                          },
+                          "message": "Error: page.waitForSelector: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[90m// Helper to wait for AI response\u001b[39m\n \u001b[90m 4 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m waitForAIResponse(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m timeout \u001b[33m=\u001b[39m \u001b[35m30000\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])'\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m   |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     timeout\u001b[33m,\u001b[39m\n \u001b[90m 7 |\u001b[39m     state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m\n \u001b[90m 8 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at waitForAIResponse (/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:5:14)\u001b[22m\n\u001b[2m    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:43:11\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T05:56:31.459Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium/error-context.md"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30264,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                            "column": 14,
+                            "line": 5
+                          },
+                          "message": "Error: page.waitForSelector: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[90m// Helper to wait for AI response\u001b[39m\n \u001b[90m 4 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m waitForAIResponse(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m timeout \u001b[33m=\u001b[39m \u001b[35m30000\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])'\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m   |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     timeout\u001b[33m,\u001b[39m\n \u001b[90m 7 |\u001b[39m     state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m\n \u001b[90m 8 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at waitForAIResponse (/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:5:14)\u001b[22m\n\u001b[2m    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:43:11\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-12-10T05:57:02.152Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry1/trace.zip"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30413,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                            "column": 14,
+                            "line": 5
+                          },
+                          "message": "Error: page.waitForSelector: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[90m// Helper to wait for AI response\u001b[39m\n \u001b[90m 4 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m waitForAIResponse(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m timeout \u001b[33m=\u001b[39m \u001b[35m30000\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])'\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m   |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     timeout\u001b[33m,\u001b[39m\n \u001b[90m 7 |\u001b[39m     state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m\n \u001b[90m 8 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at waitForAIResponse (/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:5:14)\u001b[22m\n\u001b[2m    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:43:11\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2025-12-10T05:57:33.142Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry2/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry2/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-ecc7d-arch-flight-VN123---On-Time-chromium-retry2/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-cdf6d1e13782e5b9d097",
+              "file": "flight-search.spec.ts",
+              "line": 41,
+              "column": 7
+            },
+            {
+              "title": "should search delayed flight VN456",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "interrupted",
+                      "duration": 2011,
+                      "error": {
+                        "message": "Error: page.waitForSelector: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])') to be visible\u001b[22m\n",
+                        "stack": "Error: page.waitForSelector: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])') to be visible\u001b[22m\n\n    at waitForAIResponse (/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:5:14)\n    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:52:11",
+                        "location": {
+                          "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                          "column": 14,
+                          "line": 5
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[90m// Helper to wait for AI response\u001b[39m\n \u001b[90m 4 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m waitForAIResponse(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m timeout \u001b[33m=\u001b[39m \u001b[35m30000\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])'\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m   |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     timeout\u001b[33m,\u001b[39m\n \u001b[90m 7 |\u001b[39m     state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m\n \u001b[90m 8 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                            "column": 14,
+                            "line": 5
+                          },
+                          "message": "Error: page.waitForSelector: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[90m// Helper to wait for AI response\u001b[39m\n \u001b[90m 4 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m waitForAIResponse(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m timeout \u001b[33m=\u001b[39m \u001b[35m30000\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[class*=\"assistant\"], [class*=\"message\"]:not([class*=\"user\"])'\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m   |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     timeout\u001b[33m,\u001b[39m\n \u001b[90m 7 |\u001b[39m     state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m\n \u001b[90m 8 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at waitForAIResponse (/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:5:14)\u001b[22m\n\u001b[2m    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:52:11\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T05:58:04.137Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-7434f-search-delayed-flight-VN456-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/tests/test-results/flight-search-Flight-Searc-7434f-search-delayed-flight-VN456-chromium/video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                        "column": 14,
+                        "line": 5
+                      }
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-a1202beef5ee88798096",
+              "file": "flight-search.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "should show compensation info for delayed flight",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-58f0696227bde9933fdd",
+              "file": "flight-search.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "should handle cancelled flight QH101",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-5e914d0481b4052a0c41",
+              "file": "flight-search.spec.ts",
+              "line": 68,
+              "column": 7
+            },
+            {
+              "title": "should search with Vietnamese text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-3ccb3aa5cf78051d8616",
+              "file": "flight-search.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "should handle unknown flight gracefully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-453f834a09c4d13a3274",
+              "file": "flight-search.spec.ts",
+              "line": 86,
+              "column": 7
+            },
+            {
+              "title": "should display welcome message on load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-7329721245e2a4ef04a2",
+              "file": "flight-search.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "should have input field and submit button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-4be7cc9253a5a95c5571",
+              "file": "flight-search.spec.ts",
+              "line": 33,
+              "column": 7
+            },
+            {
+              "title": "should search flight VN123 - On Time",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-0e28ed9474b1734775de",
+              "file": "flight-search.spec.ts",
+              "line": 41,
+              "column": 7
+            },
+            {
+              "title": "should search delayed flight VN456",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-2f775a070cd609b3cb5b",
+              "file": "flight-search.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "should show compensation info for delayed flight",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-c2aac88287d8029226a9",
+              "file": "flight-search.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "should handle cancelled flight QH101",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-fade833d5d0efb2d954d",
+              "file": "flight-search.spec.ts",
+              "line": 68,
+              "column": 7
+            },
+            {
+              "title": "should search with Vietnamese text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-e7b3b5b20ae3c7aa0dac",
+              "file": "flight-search.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "should handle unknown flight gracefully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-51d712390fecd4f71db0",
+              "file": "flight-search.spec.ts",
+              "line": 86,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Flight Search - Multi-turn Conversation",
+          "file": "flight-search.spec.ts",
+          "line": 97,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should maintain context in follow-up questions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-163248b1cf8066b4c4f8",
+              "file": "flight-search.spec.ts",
+              "line": 104,
+              "column": 7
+            },
+            {
+              "title": "should handle 3-turn conversation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-f29e4006aa08a13450d2",
+              "file": "flight-search.spec.ts",
+              "line": 118,
+              "column": 7
+            },
+            {
+              "title": "should maintain context in follow-up questions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-84c53054864b0d7b0b09",
+              "file": "flight-search.spec.ts",
+              "line": 104,
+              "column": 7
+            },
+            {
+              "title": "should handle 3-turn conversation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-f69f3c2747f851145930",
+              "file": "flight-search.spec.ts",
+              "line": 118,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Flight Search - Error Handling",
+          "file": "flight-search.spec.ts",
+          "line": 138,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should not submit empty message",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-55f07708d01faf0ee17f",
+              "file": "flight-search.spec.ts",
+              "line": 145,
+              "column": 7
+            },
+            {
+              "title": "should handle special characters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-45be13d9ff6a7381c071",
+              "file": "flight-search.spec.ts",
+              "line": 160,
+              "column": 7
+            },
+            {
+              "title": "should not submit empty message",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-2444a9364982b124d303",
+              "file": "flight-search.spec.ts",
+              "line": 145,
+              "column": 7
+            },
+            {
+              "title": "should handle special characters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "47fffddb3934426a894f-a61de5a30eaa5c121e98",
+              "file": "flight-search.spec.ts",
+              "line": 160,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "weather-query.spec.ts",
+      "file": "weather-query.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Weather Query E2E Tests",
+          "file": "weather-query.spec.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should query weather for Hanoi in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-f1f9b0f398e7fc8e7704",
+              "file": "weather-query.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "should query weather for SGN airport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-880e15961a18aa85ee26",
+              "file": "weather-query.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Da Nang",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-27a029f679c55c2013b5",
+              "file": "weather-query.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Phu Quoc",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-a921e6fbd9402ee2c217",
+              "file": "weather-query.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "should include humidity or wind info",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-9e2821e3ddf03bf521af",
+              "file": "weather-query.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "should handle weather query with flight context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-a250af7b92df165d77b4",
+              "file": "weather-query.spec.ts",
+              "line": 69,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Hanoi in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-2aed4790ec07c7c26523",
+              "file": "weather-query.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "should query weather for SGN airport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-cb74e568ad558d10c556",
+              "file": "weather-query.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Da Nang",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-c0f30a63e44a075eaa70",
+              "file": "weather-query.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Phu Quoc",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-afb456d602c6d7578ce8",
+              "file": "weather-query.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "should include humidity or wind info",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-157ecdae4a35cdbf55fa",
+              "file": "weather-query.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "should handle weather query with flight context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-775f3c7ecc5a23b1654e",
+              "file": "weather-query.spec.ts",
+              "line": 69,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Weather Query - Different Formats",
+          "file": "weather-query.spec.ts",
+          "line": 84,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should understand airport code format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-9b78d26ae13635c4cbb0",
+              "file": "weather-query.spec.ts",
+              "line": 91,
+              "column": 7
+            },
+            {
+              "title": "should understand city name in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-bafe7723a3136c3037a5",
+              "file": "weather-query.spec.ts",
+              "line": 99,
+              "column": 7
+            },
+            {
+              "title": "should handle weather in natural language",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-9bea7f29b53a706ef71c",
+              "file": "weather-query.spec.ts",
+              "line": 107,
+              "column": 7
+            },
+            {
+              "title": "should understand airport code format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-cbabeece1abdd2dc15f0",
+              "file": "weather-query.spec.ts",
+              "line": 91,
+              "column": 7
+            },
+            {
+              "title": "should understand city name in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-56c157eaf08cd1775c25",
+              "file": "weather-query.spec.ts",
+              "line": 99,
+              "column": 7
+            },
+            {
+              "title": "should handle weather in natural language",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-1c0251356749e1c57bab",
+              "file": "weather-query.spec.ts",
+              "line": 107,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-10T05:56:28.594Z",
+    "duration": 97886.261,
+    "expected": 2,
+    "skipped": 39,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -23,8 +23,8 @@ export default function App() {
   const [weather, setWeather] = useState([]);
   const endRef = useRef(null);
 
-  useEffect(() => { 
-    endRef.current?.scrollIntoView({ behavior: 'smooth' }); 
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   useEffect(() => {
@@ -67,10 +67,10 @@ Tôi được tích hợp với:
       ]);
       setFlights(flightsRes);
       setWeather(weatherRes);
-      setDbStats({ 
-        flights: flightsRes.length, 
-        airports: airportsRes.length, 
-        weather: weatherRes.length 
+      setDbStats({
+        flights: flightsRes.length,
+        airports: airportsRes.length,
+        weather: weatherRes.length
       });
     } catch (e) {
       console.error('Failed to load data:', e);
@@ -103,8 +103,8 @@ Tôi được tích hợp với:
         throw new Error(data.error || 'API error');
       }
     } catch (error) {
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
+      setMessages(prev => [...prev, {
+        role: 'assistant',
         content: '❌ **Lỗi:** ' + error.message + '\n\nVui lòng kiểm tra backend server và OpenAI API key.'
       }]);
     }
@@ -144,10 +144,10 @@ Tôi được tích hợp với:
           <span className="text-base">{agent.icon}</span>
           <span className="font-semibold text-gray-700">{agent.name}</span>
           {typeLabels[log.type] && (
-            <span className={'px-1.5 py-0.5 rounded text-[10px] font-bold ' + 
+            <span className={'px-1.5 py-0.5 rounded text-[10px] font-bold ' +
               (log.type === 'a2a' ? 'bg-purple-200 text-purple-800' :
-               log.type === 'mcp' ? 'bg-blue-200 text-blue-800' :
-               'bg-amber-200 text-amber-800')
+                log.type === 'mcp' ? 'bg-blue-200 text-blue-800' :
+                  'bg-amber-200 text-amber-800')
             }>{typeLabels[log.type]}</span>
           )}
         </div>
@@ -176,7 +176,7 @@ Tôi được tích hợp với:
             <span className="text-2xl">✨</span>
           </div>
           <div className="flex items-center justify-center gap-3 mt-2 text-xs flex-wrap">
-            <span className={'flex items-center gap-1 px-2 py-1 rounded-full ' + 
+            <span className={'flex items-center gap-1 px-2 py-1 rounded-full ' +
               (apiStatus === 'connected' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300')
             }>
               🔌 API: {apiStatus}
@@ -250,24 +250,27 @@ Tôi được tích hợp với:
               </div>
 
               <div className="p-3 border-t">
-                <div className="flex gap-2">
+                <form
+                  onSubmit={(e) => { e.preventDefault(); submit(); }}
+                  className="flex gap-2"
+                >
                   <input
                     type="text"
                     value={input}
                     onChange={e => setInput(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && submit()}
                     placeholder="Nhập tin nhắn... (VN123, thời tiết HAN, ...)"
                     className="flex-1 px-4 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
                     disabled={isProcessing || apiStatus !== 'connected'}
                   />
                   <button
-                    onClick={submit}
+                    type="submit"
+                    aria-label="Gửi"
                     disabled={isProcessing || !input.trim() || apiStatus !== 'connected'}
                     className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition"
                   >
-                    📤
+                    Send 📤
                   </button>
-                </div>
+                </form>
               </div>
             </div>
 
@@ -324,7 +327,7 @@ Tôi được tích hợp với:
                     <td className="p-2 font-mono font-semibold">{f.flight_code}</td>
                     <td className="p-2">{f.airline}</td>
                     <td className="p-2">{f.from_airport} → {f.to_airport}</td>
-                    <td className="p-2 font-mono">{f.departure_time?.slice(0,5)} - {f.arrival_time?.slice(0,5)}</td>
+                    <td className="p-2 font-mono">{f.departure_time?.slice(0, 5)} - {f.arrival_time?.slice(0, 5)}</td>
                     <td className="p-2">
                       <span className={'px-2 py-0.5 rounded-full text-xs font-medium ' + (statusColors[f.status] || 'bg-gray-100')}>
                         {f.status}
