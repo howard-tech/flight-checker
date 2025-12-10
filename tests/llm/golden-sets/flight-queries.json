@@ -1,0 +1,59 @@
+{
+    "name": "Flight Queries",
+    "test_cases": [
+        {
+            "id": "FQ001",
+            "query": "VN123",
+            "expected": {
+                "should_contain": [
+                    "VN123"
+                ],
+                "should_match_status": "On Time",
+                "expected_tools": [
+                    "search_flight"
+                ]
+            },
+            "priority": "high"
+        },
+        {
+            "id": "FQ002",
+            "query": "Tra cứu chuyến VN456",
+            "expected": {
+                "should_contain": [
+                    "VN456",
+                    "Delayed"
+                ],
+                "expected_tools": [
+                    "search_flight"
+                ]
+            },
+            "priority": "high"
+        },
+        {
+            "id": "FQ003",
+            "query": "QH101 có bay không?",
+            "expected": {
+                "should_contain": [
+                    "QH101",
+                    "Cancelled"
+                ],
+                "expected_tools": [
+                    "search_flight"
+                ]
+            },
+            "priority": "high"
+        },
+        {
+            "id": "FQ004",
+            "query": "INVALID999",
+            "expected": {
+                "should_contain_any": [
+                    "không tìm thấy",
+                    "not found",
+                    "không có"
+                ]
+            },
+            "priority": "medium"
+        }
+    ]
+}

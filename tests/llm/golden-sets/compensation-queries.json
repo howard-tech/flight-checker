@@ -1,0 +1,33 @@
+{
+    "name": "Compensation Queries",
+    "test_cases": [
+        {
+            "id": "CQ001",
+            "query": "Delay 3 tiếng, vé 2 triệu, bồi thường bao nhiêu?",
+            "expected": {
+                "should_contain_any": [
+                    "bồi thường",
+                    "compensation"
+                ],
+                "eligible": true,
+                "expected_tools": [
+                    "calculate_compensation"
+                ]
+            },
+            "priority": "high"
+        },
+        {
+            "id": "CQ002",
+            "query": "Bay trễ 30 phút có được đền bù không?",
+            "expected": {
+                "should_contain_any": [
+                    "không đủ",
+                    "không được",
+                    "dưới 2 giờ"
+                ],
+                "eligible": false
+            },
+            "priority": "high"
+        }
+    ]
+}

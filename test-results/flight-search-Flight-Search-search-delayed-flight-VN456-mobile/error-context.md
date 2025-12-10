@@ -1,0 +1,179 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: 🛫
+      - heading "AI Flight Assistant" [level=1] [ref=e8]
+      - generic [ref=e9]: ✨
+    - generic [ref=e10]:
+      - generic [ref=e11]: "🔌 API: connected"
+      - generic [ref=e12]: 🗄️ 4 flights | 4 airports
+      - button "🔄" [ref=e13] [cursor=pointer]
+  - generic [ref=e14]:
+    - button "💬 Chat" [ref=e15] [cursor=pointer]:
+      - generic [ref=e16]: 💬
+      - text: Chat
+    - button "✈️ Flights" [ref=e17] [cursor=pointer]:
+      - generic [ref=e18]: ✈️
+      - text: Flights
+    - button "🌤️ Weather" [ref=e19] [cursor=pointer]:
+      - generic [ref=e20]: 🌤️
+      - text: Weather
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - heading "💬 Chat with AI" [level=2] [ref=e25]
+          - paragraph [ref=e26]: GPT-4 + MCP Tools + PostgreSQL
+        - button "Clear" [ref=e27] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e31]: "🛫 **Xin chào! Tôi là AI Flight Assistant** Tôi được tích hợp với: • 🤖 **OpenAI GPT-4** - Xử lý ngôn ngữ tự nhiên • 🔧 **MCP Tools** - Truy vấn database • 🔗 **A2A Protocol** - Phối hợp đa agent • 🗄️ **PostgreSQL** - Lưu trữ dữ liệu **Thử ngay:** • VN123 - Chuyến bay đúng giờ • VN456 - Chuyến bay delay • QH101 - Chuyến bay bị hủy • thời tiết Hà Nội - Xem thời tiết"
+        - generic [ref=e34]: Tra cứu chuyến VN456
+        - generic [ref=e37]: "✈️ **Thông tin chuyến bay VN456**: - **Hãng hàng không**: Vietnam Airlines - **Điểm xuất phát**: Sân bay Quốc tế Tân Sơn Nhất (SGN), TP. Hồ Chí Minh - **Điểm đến**: Sân bay Quốc tế Đà Nẵng (DAD), Đà Nẵng - **Thời gian khởi hành**: 09:30 - **Thời gian đến**: 10:45 - **Trạng thái**: **Đã bị trì hoãn** (trì hoãn 45 phút) - **Cổng**: B3 - **Nhà ga**: T1 - **Giá vé**: 1.800.000 VND - **Lý do trì hoãn**: Điều kiện thời tiết 💰 **Thông tin bồi thường**: - Bạn không đủ điều kiện để được bồi thường vì thời gian trì hoãn dưới 1 giờ. 🔄 **Chuyến bay thay thế**: Hiện tại, chuyến bay VN456 là chuyến bay duy nhất từ SGN đến DAD vào thời điểm này. 🌤️ **Thời tiết tại Đà Nẵng**: - **Nhiệt độ**: 30°C - **Tình trạng**: Có mây - **Độ ẩm**: 70% - **Tốc độ gió**: 12 km/h - **Tầm nhìn**: Tốt Nếu bạn cần thêm thông tin hoặc hỗ trợ nào khác, hãy cho tôi biết nhé! 😊"
+      - generic [ref=e39]:
+        - textbox "Nhập tin nhắn... (VN123, thời tiết HAN, ...)" [ref=e40]
+        - button "Gửi" [disabled] [ref=e41]: Send 📤
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - heading "🤖 Agent Activity Logs" [level=2] [ref=e44]
+        - paragraph [ref=e45]: "Real-time: LLM → A2A → MCP → Database"
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]: 🎯
+            - generic [ref=e50]: Orchestrator
+          - generic [ref=e51]:
+            - generic [ref=e52]: "Received:"
+            - text: "User: \"Tra cứu chuyến VN456\""
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: 🎯
+            - generic [ref=e56]: Orchestrator
+            - generic [ref=e57]: LLM
+          - generic [ref=e58]:
+            - generic [ref=e59]: "[LLM] Request:"
+            - text: Sending to OpenAI GPT-4...
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e62]: 🎯
+            - generic [ref=e63]: Orchestrator
+            - generic [ref=e64]: A2A
+          - generic [ref=e65]:
+            - generic [ref=e66]: "[A2A] Delegate:"
+            - text: "→ flight Agent: search_flight"
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: ✈️
+            - generic [ref=e70]: Flight Agent
+            - generic [ref=e71]: MCP
+          - generic [ref=e72]:
+            - generic [ref=e73]: "[MCP] Execute:"
+            - text: "search_flight({\"flight_code\":\"VN456\"})"
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - generic [ref=e76]: ✈️
+            - generic [ref=e77]: Flight Agent
+          - generic [ref=e78]:
+            - generic [ref=e79]: "Result:"
+            - text: "{\"id\":2,\"flight_code\":\"VN456\",\"airline\":\"Vietnam Airlines\",\"from_airport\":\"SGN\",\"to_airport\":\"DAD\",\"..."
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: 🎯
+            - generic [ref=e83]: Orchestrator
+            - generic [ref=e84]: LLM
+          - generic [ref=e85]:
+            - generic [ref=e86]: "[LLM] Continue:"
+            - text: Processing tool results...
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: 🎯
+            - generic [ref=e90]: Orchestrator
+            - generic [ref=e91]: A2A
+          - generic [ref=e92]:
+            - generic [ref=e93]: "[A2A] Delegate:"
+            - text: "→ support Agent: calculate_compensation"
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: 💬
+            - generic [ref=e97]: Support Agent
+            - generic [ref=e98]: MCP
+          - generic [ref=e99]:
+            - generic [ref=e100]: "[MCP] Execute:"
+            - text: "calculate_compensation({\"delay_minutes\":45,\"ticket_price\":1800000})"
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: 💬
+            - generic [ref=e104]: Support Agent
+          - generic [ref=e105]:
+            - generic [ref=e106]: "Result:"
+            - text: "{\"eligible\":false,\"compensation_amount\":0,\"rate\":\"0%\",\"policy\":\"Delay <1 hour: No compensation\",\"del..."
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - generic [ref=e109]: 🎯
+            - generic [ref=e110]: Orchestrator
+            - generic [ref=e111]: A2A
+          - generic [ref=e112]:
+            - generic [ref=e113]: "[A2A] Delegate:"
+            - text: "→ support Agent: find_alternatives"
+        - generic [ref=e114]:
+          - generic [ref=e115]:
+            - generic [ref=e116]: 💬
+            - generic [ref=e117]: Support Agent
+            - generic [ref=e118]: MCP
+          - generic [ref=e119]:
+            - generic [ref=e120]: "[MCP] Execute:"
+            - text: "find_alternatives({\"from_airport\":\"SGN\",\"to_airport\":\"DAD\"})"
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - generic [ref=e123]: 💬
+            - generic [ref=e124]: Support Agent
+          - generic [ref=e125]:
+            - generic [ref=e126]: "Result:"
+            - text: "{\"alternatives\":[{\"id\":2,\"flight_code\":\"VN456\",\"airline\":\"Vietnam Airlines\",\"from_airport\":\"SGN\",\"to..."
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - generic [ref=e129]: 🎯
+            - generic [ref=e130]: Orchestrator
+            - generic [ref=e131]: A2A
+          - generic [ref=e132]:
+            - generic [ref=e133]: "[A2A] Delegate:"
+            - text: "→ weather Agent: get_weather"
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]: 🌤️
+            - generic [ref=e137]: Weather Agent
+            - generic [ref=e138]: MCP
+          - generic [ref=e139]:
+            - generic [ref=e140]: "[MCP] Execute:"
+            - text: "get_weather({\"airport_code\":\"DAD\"})"
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]: 🌤️
+            - generic [ref=e144]: Weather Agent
+          - generic [ref=e145]:
+            - generic [ref=e146]: "Result:"
+            - text: "{\"id\":3,\"airport_code\":\"DAD\",\"temperature\":30,\"condition\":\"Partly Cloudy\",\"humidity\":70,\"wind_speed\"..."
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]: 🎯
+            - generic [ref=e150]: Orchestrator
+            - generic [ref=e151]: LLM
+          - generic [ref=e152]:
+            - generic [ref=e153]: "[LLM] Continue:"
+            - text: Processing tool results...
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - generic [ref=e156]: 🎯
+            - generic [ref=e157]: Orchestrator
+          - generic [ref=e158]:
+            - generic [ref=e159]: "Complete:"
+            - text: ✓ Response generated
+      - generic [ref=e161]:
+        - generic [ref=e162]: LLM
+        - generic [ref=e164]: A2A
+        - generic [ref=e166]: MCP
+        - generic [ref=e168]: Success
+  - generic [ref=e170]: Built with React + Express + PostgreSQL + OpenAI | MCP + A2A Demo
+```

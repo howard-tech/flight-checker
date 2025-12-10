@@ -1,173 +1,38 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { ChatPage } from './pages/ChatPage';
 
-// Helper to wait for AI response
-async function waitForAIResponse(page: Page, timeout = 30000) {
-  // Wait for a message with role 'assistant' that is visible
-  await page.waitForSelector('[data-testid="message-assistant"]', {
-    timeout,
-    state: 'visible'
-  });
-  // Wait a bit more for content to fully render
-  await page.waitForTimeout(500);
-}
-
-// Helper to send message
-async function sendMessage(page: Page, message: string) {
-  await page.fill('[data-testid="chat-input"]', message);
-  await page.click('[data-testid="chat-submit"]');
-}
-
-test.describe('Flight Search E2E Tests', () => {
+test.describe('Flight Search', () => {
+  let chatPage: ChatPage;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    // Wait for app to fully load
-    await page.waitForLoadState('networkidle');
-    await page.waitForSelector('[data-testid="chat-input"]', { timeout: 15000 });
+    chatPage = new ChatPage(page);
+    await chatPage.goto();
   });
 
-  test('should display welcome message on load', async ({ page }) => {
-    // Wait for initial assistant message
-    await page.waitForSelector('[data-testid="message-assistant"]');
-    const body = await page.textContent('body');
-    expect(body?.toLowerCase()).toMatch(/xin chào|welcome|trợ lý|assistant/i);
+  test('search on-time flight VN123', async () => {
+    await chatPage.sendMessage('VN123');
+    await chatPage.waitForResponse();
+
+    const response = await chatPage.getLastResponse();
+    expect(response).toContain('VN123');
+    expect(response.toLowerCase()).toMatch(/on\s*time|đúng giờ/i);
   });
 
-  test('should have input field and submit button', async ({ page }) => {
-    const input = page.locator('[data-testid="chat-input"]');
-    const button = page.locator('[data-testid="chat-submit"]');
+  test('search delayed flight VN456', async () => {
+    await chatPage.sendMessage('Tra cứu chuyến VN456');
+    await chatPage.waitForResponse();
 
-    await expect(input).toBeVisible();
-    await expect(button).toBeVisible();
+    const response = await chatPage.getLastResponse();
+    expect(response).toContain('VN456');
+    expect(response.toLowerCase()).toMatch(/delay|trễ|chậm/i);
   });
 
-  test('should search flight VN123 - On Time', async ({ page }) => {
-    await sendMessage(page, 'VN123');
-    await waitForAIResponse(page);
+  test('search cancelled flight QH101', async () => {
+    await chatPage.sendMessage('QH101');
+    await chatPage.waitForResponse();
 
-    const response = await page.textContent('body');
-    expect(response?.toLowerCase()).toMatch(/vn123/i);
-    expect(response?.toLowerCase()).toMatch(/on time|đúng giờ|vietnam airlines/i);
-  });
-
-  test('should search delayed flight VN456', async ({ page }) => {
-    await sendMessage(page, 'VN456');
-    await waitForAIResponse(page);
-
-    const response = await page.textContent('body');
-    expect(response?.toLowerCase()).toMatch(/vn456/i);
-    expect(response?.toLowerCase()).toMatch(/delay|trễ|chậm/i);
-  });
-
-  test('should show compensation info for delayed flight', async ({ page }) => {
-    await sendMessage(page, 'Tra cứu chuyến VN456');
-    await waitForAIResponse(page);
-
-    const response = await page.textContent('body');
-    // Should mention delay or compensation
-    expect(response?.toLowerCase()).toMatch(/delay|trễ|bồi thường|compensation/i);
-  });
-
-  test('should handle cancelled flight QH101', async ({ page }) => {
-    await sendMessage(page, 'QH101');
-    await waitForAIResponse(page);
-
-    const response = await page.textContent('body');
-    expect(response?.toLowerCase()).toMatch(/qh101/i);
-    expect(response?.toLowerCase()).toMatch(/cancel|hủy|thay thế|alternative/i);
-  });
-
-  test('should search with Vietnamese text', async ({ page }) => {
-    await sendMessage(page, 'Tra cứu chuyến bay VN123');
-    await waitForAIResponse(page);
-
-    const response = await page.textContent('body');
-    expect(response).toBeDefined();
-    expect(response?.length).toBeGreaterThan(50);
-  });
-
-  test('should handle unknown flight gracefully', async ({ page }) => {
-    await sendMessage(page, 'UNKNOWN999');
-    await waitForAIResponse(page);
-
-    const response = await page.textContent('body');
-    // Should still get a response, not error
-    expect(response).toBeDefined();
-    expect(response).toBeDefined();
-    // Allow broadly any response as long as it's not an error crash
-    // expect(response?.toLowerCase()).toMatch(...); 
-  });
-});
-
-test.describe('Flight Search - Multi-turn Conversation', () => {
-
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    await page.waitForSelector('input', { timeout: 15000 });
-  });
-
-  test('should maintain context in follow-up questions', async ({ page }) => {
-    // First question
-    await sendMessage(page, 'VN456');
-    await waitForAIResponse(page);
-
-    // Follow-up question
-    await sendMessage(page, 'có chuyến nào thay thế không?');
-    await waitForAIResponse(page);
-
-    const response = await page.textContent('body');
-    // Should understand context from previous message
-    expect(response?.toLowerCase()).toMatch(/thay thế|alternative|chuyến khác|other flight/i);
-  });
-
-  test('should handle 3-turn conversation', async ({ page }) => {
-    // Turn 1
-    await sendMessage(page, 'VN123');
-    await waitForAIResponse(page);
-
-    // Turn 2
-    await sendMessage(page, 'thời tiết ở điểm đến thế nào?');
-    await waitForAIResponse(page);
-
-    // Turn 3
-    await sendMessage(page, 'cảm ơn bạn');
-    await waitForAIResponse(page);
-
-    // Should see multiple messages
-    const messages = page.locator('[data-testid^="message-"]');
-    const count = await messages.count();
-    expect(count).toBeGreaterThanOrEqual(4); // At least welcome + 3 exchanges
-  });
-});
-
-test.describe('Flight Search - Error Handling', () => {
-
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    await page.waitForSelector('input', { timeout: 15000 });
-  });
-
-  test('should not submit empty message', async ({ page }) => {
-    const input = page.locator('input[type="text"], textarea');
-    await input.fill('');
-
-    const button = page.locator('button[type="submit"]');
-
-    // Button should be disabled or clicking should not trigger submit
-    const isDisabled = await button.isDisabled();
-    if (!isDisabled) {
-      await button.click();
-      // Should not show new assistant message
-      await page.waitForTimeout(1000);
-    }
-  });
-
-  test('should handle special characters', async ({ page }) => {
-    await sendMessage(page, '!@#$%^&*()');
-    await waitForAIResponse(page);
-
-    // Should get a response without crashing
-    const response = await page.textContent('body');
-    expect(response).toBeDefined();
+    const response = await chatPage.getLastResponse();
+    expect(response).toContain('QH101');
+    expect(response.toLowerCase()).toMatch(/cancel|hủy/i);
   });
 });

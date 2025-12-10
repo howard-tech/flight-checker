@@ -1,0 +1,1067 @@
+{
+  "config": {
+    "configFile": "/Users/hungnguyen/Downloads/flight-checker/tests/__config__/playwright.config.ts",
+    "rootDir": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 7
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/hungnguyen/Downloads/flight-checker/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/hungnguyen/Downloads/flight-checker/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 7,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "chat-conversation.spec.ts",
+      "file": "chat-conversation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Chat Conversation",
+          "file": "chat-conversation.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "multi-turn conversation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 19186,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.067Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b940be731876cbc08865-0f0c4186bfbdb924fb90",
+              "file": "chat-conversation.spec.ts",
+              "line": 12,
+              "column": 9
+            },
+            {
+              "title": "multi-turn conversation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 19108,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:54.122Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b940be731876cbc08865-1d9ad40738c807b98045",
+              "file": "chat-conversation.spec.ts",
+              "line": 12,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "flight-search.spec.ts",
+      "file": "flight-search.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Flight Search",
+          "file": "flight-search.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "search on-time flight VN123",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8311,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.070Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-abddd654b00fbd138959",
+              "file": "flight-search.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "search delayed flight VN456",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 11866,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.069Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-e240b85fd92785dcef6f",
+              "file": "flight-search.spec.ts",
+              "line": 21,
+              "column": 7
+            },
+            {
+              "title": "search cancelled flight QH101",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 10524,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.071Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-77389b1e67612ab6b6f7",
+              "file": "flight-search.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "search on-time flight VN123",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 7753,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:54.817Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-85f0e5dc532385d1ada4",
+              "file": "flight-search.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "search delayed flight VN456",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 13231,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/delay|trễ|chậm/i\u001b[39m\nReceived string:  \u001b[31m\"✈️ **thông tin chuyến bay vn456**:·\u001b[39m\n\u001b[31m- **hãng hàng không**: vietnam airlines\u001b[39m\n\u001b[31m- **điểm xuất phát**: sân bay quốc tế tân sơn nhất (sgn), tp. hồ chí minh\u001b[39m\n\u001b[31m- **điểm đến**: sân bay quốc tế đà nẵng (dad), đà nẵng\u001b[39m\n\u001b[31m- **thời gian khởi hành**: 09:30\u001b[39m\n\u001b[31m- **thời gian đến**: 10:45\u001b[39m\n\u001b[31m- **trạng thái**: **đã bị trì hoãn** (trì hoãn 45 phút)\u001b[39m\n\u001b[31m- **cổng**: b3\u001b[39m\n\u001b[31m- **nhà ga**: t1\u001b[39m\n\u001b[31m- **giá vé**: 1.800.000 vnd\u001b[39m\n\u001b[31m- **lý do trì hoãn**: điều kiện thời tiết·\u001b[39m\n\u001b[31m💰 **thông tin bồi thường**:\u001b[39m\n\u001b[31m- bạn không đủ điều kiện để được bồi thường vì thời gian trì hoãn dưới 1 giờ.·\u001b[39m\n\u001b[31m🔄 **chuyến bay thay thế**:\u001b[39m\n\u001b[31mhiện tại, chuyến bay vn456 là chuyến bay duy nhất từ sgn đến dad vào thời điểm này.·\u001b[39m\n\u001b[31m🌤️ **thời tiết tại đà nẵng**:\u001b[39m\n\u001b[31m- **nhiệt độ**: 30°c\u001b[39m\n\u001b[31m- **tình trạng**: có mây\u001b[39m\n\u001b[31m- **độ ẩm**: 70%\u001b[39m\n\u001b[31m- **tốc độ gió**: 12 km/h\u001b[39m\n\u001b[31m- **tầm nhìn**: tốt·\u001b[39m\n\u001b[31mnếu bạn cần thêm thông tin hoặc hỗ trợ nào khác, hãy cho tôi biết nhé! 😊\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/delay|trễ|chậm/i\u001b[39m\nReceived string:  \u001b[31m\"✈️ **thông tin chuyến bay vn456**:·\u001b[39m\n\u001b[31m- **hãng hàng không**: vietnam airlines\u001b[39m\n\u001b[31m- **điểm xuất phát**: sân bay quốc tế tân sơn nhất (sgn), tp. hồ chí minh\u001b[39m\n\u001b[31m- **điểm đến**: sân bay quốc tế đà nẵng (dad), đà nẵng\u001b[39m\n\u001b[31m- **thời gian khởi hành**: 09:30\u001b[39m\n\u001b[31m- **thời gian đến**: 10:45\u001b[39m\n\u001b[31m- **trạng thái**: **đã bị trì hoãn** (trì hoãn 45 phút)\u001b[39m\n\u001b[31m- **cổng**: b3\u001b[39m\n\u001b[31m- **nhà ga**: t1\u001b[39m\n\u001b[31m- **giá vé**: 1.800.000 vnd\u001b[39m\n\u001b[31m- **lý do trì hoãn**: điều kiện thời tiết·\u001b[39m\n\u001b[31m💰 **thông tin bồi thường**:\u001b[39m\n\u001b[31m- bạn không đủ điều kiện để được bồi thường vì thời gian trì hoãn dưới 1 giờ.·\u001b[39m\n\u001b[31m🔄 **chuyến bay thay thế**:\u001b[39m\n\u001b[31mhiện tại, chuyến bay vn456 là chuyến bay duy nhất từ sgn đến dad vào thời điểm này.·\u001b[39m\n\u001b[31m🌤️ **thời tiết tại đà nẵng**:\u001b[39m\n\u001b[31m- **nhiệt độ**: 30°c\u001b[39m\n\u001b[31m- **tình trạng**: có mây\u001b[39m\n\u001b[31m- **độ ẩm**: 70%\u001b[39m\n\u001b[31m- **tốc độ gió**: 12 km/h\u001b[39m\n\u001b[31m- **tầm nhìn**: tốt·\u001b[39m\n\u001b[31mnếu bạn cần thêm thông tin hoặc hỗ trợ nào khác, hãy cho tôi biết nhé! 😊\"\u001b[39m\n    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:27:36",
+                        "location": {
+                          "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                          "column": 36,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m chatPage\u001b[33m.\u001b[39mgetLastResponse()\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     expect(response)\u001b[33m.\u001b[39mtoContain(\u001b[32m'VN456'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     expect(response\u001b[33m.\u001b[39mtoLowerCase())\u001b[33m.\u001b[39mtoMatch(\u001b[35m/delay|trễ|chậm/i\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m   test(\u001b[32m'search cancelled flight QH101'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                            "column": 36,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/delay|trễ|chậm/i\u001b[39m\nReceived string:  \u001b[31m\"✈️ **thông tin chuyến bay vn456**:·\u001b[39m\n\u001b[31m- **hãng hàng không**: vietnam airlines\u001b[39m\n\u001b[31m- **điểm xuất phát**: sân bay quốc tế tân sơn nhất (sgn), tp. hồ chí minh\u001b[39m\n\u001b[31m- **điểm đến**: sân bay quốc tế đà nẵng (dad), đà nẵng\u001b[39m\n\u001b[31m- **thời gian khởi hành**: 09:30\u001b[39m\n\u001b[31m- **thời gian đến**: 10:45\u001b[39m\n\u001b[31m- **trạng thái**: **đã bị trì hoãn** (trì hoãn 45 phút)\u001b[39m\n\u001b[31m- **cổng**: b3\u001b[39m\n\u001b[31m- **nhà ga**: t1\u001b[39m\n\u001b[31m- **giá vé**: 1.800.000 vnd\u001b[39m\n\u001b[31m- **lý do trì hoãn**: điều kiện thời tiết·\u001b[39m\n\u001b[31m💰 **thông tin bồi thường**:\u001b[39m\n\u001b[31m- bạn không đủ điều kiện để được bồi thường vì thời gian trì hoãn dưới 1 giờ.·\u001b[39m\n\u001b[31m🔄 **chuyến bay thay thế**:\u001b[39m\n\u001b[31mhiện tại, chuyến bay vn456 là chuyến bay duy nhất từ sgn đến dad vào thời điểm này.·\u001b[39m\n\u001b[31m🌤️ **thời tiết tại đà nẵng**:\u001b[39m\n\u001b[31m- **nhiệt độ**: 30°c\u001b[39m\n\u001b[31m- **tình trạng**: có mây\u001b[39m\n\u001b[31m- **độ ẩm**: 70%\u001b[39m\n\u001b[31m- **tốc độ gió**: 12 km/h\u001b[39m\n\u001b[31m- **tầm nhìn**: tốt·\u001b[39m\n\u001b[31mnếu bạn cần thêm thông tin hoặc hỗ trợ nào khác, hãy cho tôi biết nhé! 😊\"\u001b[39m\n\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m chatPage\u001b[33m.\u001b[39mgetLastResponse()\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     expect(response)\u001b[33m.\u001b[39mtoContain(\u001b[32m'VN456'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     expect(response\u001b[33m.\u001b[39mtoLowerCase())\u001b[33m.\u001b[39mtoMatch(\u001b[35m/delay|trễ|chậm/i\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m   test(\u001b[32m'search cancelled flight QH101'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts:27:36\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:58.880Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/test-results/flight-search-Flight-Search-search-delayed-flight-VN456-mobile/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/hungnguyen/Downloads/flight-checker/test-results/flight-search-Flight-Search-search-delayed-flight-VN456-mobile/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/hungnguyen/Downloads/flight-checker/tests/e2e/flight-search.spec.ts",
+                        "column": 36,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-817afb6f5c331bd997cd",
+              "file": "flight-search.spec.ts",
+              "line": 21,
+              "column": 7
+            },
+            {
+              "title": "search cancelled flight QH101",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 12323,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:00.539Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "47fffddb3934426a894f-f37a4d97edbab587ef54",
+              "file": "flight-search.spec.ts",
+              "line": 30,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "weather-query.spec.ts",
+      "file": "weather-query.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Weather Query E2E Tests",
+          "file": "weather-query.spec.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should query weather for Hanoi in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1419,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.071Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-f1f9b0f398e7fc8e7704",
+              "file": "weather-query.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "should query weather for SGN airport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 1415,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.071Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-880e15961a18aa85ee26",
+              "file": "weather-query.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Da Nang",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 1420,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:50.072Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-27a029f679c55c2013b5",
+              "file": "weather-query.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Phu Quoc",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 1223,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:51.744Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-a921e6fbd9402ee2c217",
+              "file": "weather-query.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "should include humidity or wind info",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1222,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:51.744Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-9e2821e3ddf03bf521af",
+              "file": "weather-query.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "should handle weather query with flight context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 8536,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:51.755Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-a250af7b92df165d77b4",
+              "file": "weather-query.spec.ts",
+              "line": 69,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Hanoi in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1453,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:01.113Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-6420db3cb959a65e2c40",
+              "file": "weather-query.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "should query weather for SGN airport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1522,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:02.437Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-6d08f35bd5943d60f671",
+              "file": "weather-query.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Da Nang",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1378,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:02.709Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-5ea0190e5ed4216ebadc",
+              "file": "weather-query.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "should query weather for Phu Quoc",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1375,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:02.711Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-7414e7e458294ecc06f8",
+              "file": "weather-query.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "should include humidity or wind info",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1328,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:04.093Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-b2b7601a2c70ae7cc5fa",
+              "file": "weather-query.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "should handle weather query with flight context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 10703,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:04.093Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-ef38b93527dc89ceba80",
+              "file": "weather-query.spec.ts",
+              "line": 69,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Weather Query - Different Formats",
+          "file": "weather-query.spec.ts",
+          "line": 84,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should understand airport code format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 870,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:52.972Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-9b78d26ae13635c4cbb0",
+              "file": "weather-query.spec.ts",
+              "line": 91,
+              "column": 7
+            },
+            {
+              "title": "should understand city name in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 892,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:52.972Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-bafe7723a3136c3037a5",
+              "file": "weather-query.spec.ts",
+              "line": 99,
+              "column": 7
+            },
+            {
+              "title": "should handle weather in natural language",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 718,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:54:53.848Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-9bea7f29b53a706ef71c",
+              "file": "weather-query.spec.ts",
+              "line": 107,
+              "column": 7
+            },
+            {
+              "title": "should understand airport code format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1035,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:04.096Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-ac74a74c3467bea8c093",
+              "file": "weather-query.spec.ts",
+              "line": 91,
+              "column": 7
+            },
+            {
+              "title": "should understand city name in Vietnamese",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1021,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:05.136Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-6abf1959bcbe14ec27b8",
+              "file": "weather-query.spec.ts",
+              "line": 99,
+              "column": 7
+            },
+            {
+              "title": "should handle weather in natural language",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1016,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-10T10:55:05.429Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64814f3e0b6aeb521bec-eab3f4086f7ef39ff80b",
+              "file": "weather-query.spec.ts",
+              "line": 107,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-10T10:54:49.741Z",
+    "duration": 25073.982,
+    "expected": 25,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
