@@ -231,9 +231,11 @@ Tôi được tích hợp với:
               <div className="flex-1 overflow-y-auto p-3 space-y-3">
                 {messages.map((msg, i) => (
                   <div key={i} className={'flex ' + (msg.role === 'user' ? 'justify-end' : 'justify-start')}>
-                    <div className={'max-w-[85%] rounded-xl p-3 ' +
-                      (msg.role === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-800')
-                    }>
+                    <div
+                      data-testid={`message-${msg.role}`}
+                      className={'max-w-[85%] rounded-xl p-3 ' +
+                        (msg.role === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-800')
+                      }>
                       <pre className="whitespace-pre-wrap font-sans text-sm">{msg.content}</pre>
                     </div>
                   </div>
@@ -256,6 +258,7 @@ Tôi được tích hợp với:
                 >
                   <input
                     type="text"
+                    data-testid="chat-input"
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     placeholder="Nhập tin nhắn... (VN123, thời tiết HAN, ...)"
@@ -264,6 +267,7 @@ Tôi được tích hợp với:
                   />
                   <button
                     type="submit"
+                    data-testid="chat-submit"
                     aria-label="Gửi"
                     disabled={isProcessing || !input.trim() || apiStatus !== 'connected'}
                     className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition"
