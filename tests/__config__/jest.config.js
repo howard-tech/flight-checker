@@ -19,5 +19,8 @@ module.exports = {
         '@fixtures/(.*)': '<rootDir>/fixtures/$1',
         '@utils/(.*)': '<rootDir>/utils/$1',
         '@mocks/(.*)': '<rootDir>/mocks/$1'
-    }
+    },
+    transformIgnorePatterns: [
+        'node_modules/(?!(@faker-js)/)'
+    ]
 };

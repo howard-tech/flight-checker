@@ -1,0 +1,137 @@
+{
+    "name": "Multi-turn Conversation Tests",
+    "version": "1.2",
+    "test_cases": [
+        {
+            "id": "MT001",
+            "name": "Flight then compensation",
+            "turns": [
+                {
+                    "query": "VN456",
+                    "expected": {
+                        "should_contain": [
+                            "VN456"
+                        ],
+                        "should_contain_any": [
+                            "Delayed",
+                            "delay",
+                            "trễ",
+                            "chậm",
+                            "trì hoãn",
+                            "hoãn"
+                        ]
+                    }
+                },
+                {
+                    "query": "Tôi được bồi thường không?",
+                    "expected": {
+                        "should_contain_any": [
+                            "bồi thường",
+                            "compensation",
+                            "không đủ điều kiện",
+                            "không được bồi thường",
+                            "no compensation"
+                        ],
+                        "expected_tools": [
+                            "calculate_compensation"
+                        ],
+                        "context_note": "Should use context from previous turn to calculate compensation"
+                    }
+                }
+            ],
+            "priority": "critical"
+        },
+        {
+            "id": "MT002",
+            "name": "Cancelled then alternatives",
+            "turns": [
+                {
+                    "query": "QH101",
+                    "expected": {
+                        "should_contain": [
+                            "QH101"
+                        ],
+                        "should_contain_any": [
+                            "Cancelled",
+                            "cancel",
+                            "hủy",
+                            "đã hủy",
+                            "bị hủy",
+                            "huỷ"
+                        ]
+                    }
+                },
+                {
+                    "query": "Có chuyến khác không?",
+                    "expected": {
+                        "should_remember_route": true,
+                        "should_contain_any": [
+                            "thay thế",
+                            "alternative",
+                            "chuyến khác"
+                        ],
+                        "expected_tools": [
+                            "find_alternatives"
+                        ]
+                    }
+                }
+            ],
+            "priority": "critical"
+        },
+        {
+            "id": "MT003",
+            "name": "Context switch - should not confuse",
+            "turns": [
+                {
+                    "query": "VN123",
+                    "expected": {
+                        "should_contain": [
+                            "VN123"
+                        ]
+                    }
+                },
+                {
+                    "query": "VN456",
+                    "expected": {
+                        "should_contain": [
+                            "VN456"
+                        ],
+                        "should_not_contain": [
+                            "VN123 is delayed"
+                        ],
+                        "context_note": "Should not mix up flight info"
+                    }
+                }
+            ],
+            "priority": "high"
+        },
+        {
+            "id": "MT004",
+            "name": "Weather then flight at same airport",
+            "turns": [
+                {
+                    "query": "Thời tiết ở Đà Nẵng",
+                    "expected": {
+                        "should_contain_any": [
+                            "DAD",
+                            "Đà Nẵng"
+                        ],
+                        "expected_tools": [
+                            "get_weather"
+                        ]
+                    }
+                },
+                {
+                    "query": "Có chuyến nào đến đó không?",
+                    "expected": {
+                        "should_remember_airport": "DAD",
+                        "expected_tools": [
+                            "list_flights"
+                        ]
+                    }
+                }
+            ],
+            "priority": "high"
+        }
+    ]
+}

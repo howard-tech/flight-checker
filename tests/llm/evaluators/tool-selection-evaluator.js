@@ -41,7 +41,10 @@ class ToolSelectionEvaluator extends BaseEvaluator {
     calculateScore(expected, actual) {
         if (expected.length === 0) return actual.length === 0 ? 1.0 : 0.5;
 
+        // Check if all expected tools were called (allow extra tools)
         const correct = expected.filter(t => actual.includes(t)).length;
+
+        // Full score if all expected tools are present, even if extra tools were called
         return correct / expected.length;
     }
 }

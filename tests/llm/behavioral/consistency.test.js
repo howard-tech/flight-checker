@@ -22,9 +22,9 @@ describe('LLM Consistency', () => {
             expect(r).toMatch(/VN456/i);
         });
 
-        // All should mention delay
+        // All should mention delay (English or Vietnamese)
         responses.forEach(r => {
-            expect(r.toLowerCase()).toMatch(/delay|trễ|chậm/);
+            expect(r.toLowerCase()).toMatch(/delay|trễ|chậm|trì hoãn|hoãn/);
         });
     }, TIMEOUT * NUM_RUNS);
 });

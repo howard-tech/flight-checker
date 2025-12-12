@@ -1,5 +1,6 @@
 {
-    "name": "Flight Queries",
+    "name": "Flight Queries - Extended",
+    "version": "2.0",
     "test_cases": [
         {
             "id": "FQ001",
@@ -13,35 +14,47 @@
                     "search_flight"
                 ]
             },
-            "priority": "high"
+            "priority": "high",
+            "category": "basic"
         },
         {
             "id": "FQ002",
             "query": "Tra cứu chuyến VN456",
             "expected": {
                 "should_contain": [
-                    "VN456",
-                    "Delayed"
+                    "VN456"
+                ],
+                "should_contain_any": [
+                    "Delayed",
+                    "delay",
+                    "trễ",
+                    "chậm"
                 ],
                 "expected_tools": [
                     "search_flight"
                 ]
             },
-            "priority": "high"
+            "priority": "high",
+            "category": "delayed_flight"
         },
         {
             "id": "FQ003",
             "query": "QH101 có bay không?",
             "expected": {
                 "should_contain": [
-                    "QH101",
-                    "Cancelled"
+                    "QH101"
+                ],
+                "should_contain_any": [
+                    "Cancelled",
+                    "hủy",
+                    "không bay"
                 ],
                 "expected_tools": [
                     "search_flight"
                 ]
             },
-            "priority": "high"
+            "priority": "high",
+            "category": "cancelled_flight"
         },
         {
             "id": "FQ004",
@@ -50,10 +63,76 @@
                 "should_contain_any": [
                     "không tìm thấy",
                     "not found",
-                    "không có"
+                    "không có",
+                    "không tồn tại"
+                ],
+                "should_not_hallucinate": true
+            },
+            "priority": "high",
+            "category": "not_found"
+        },
+        {
+            "id": "FQ005",
+            "query": "vn123",
+            "expected": {
+                "should_contain": [
+                    "VN123"
+                ],
+                "description": "Case insensitive flight code"
+            },
+            "priority": "medium",
+            "category": "edge_case"
+        },
+        {
+            "id": "FQ006",
+            "query": "Tất cả chuyến bay từ Sài Gòn đi Hà Nội",
+            "expected": {
+                "should_mention_multiple_flights": true,
+                "expected_tools": [
+                    "list_flights"
+                ],
+                "should_contain_any": [
+                    "VN123",
+                    "HAN",
+                    "SGN"
                 ]
             },
-            "priority": "medium"
+            "priority": "high",
+            "category": "list_query"
+        },
+        {
+            "id": "FQ007",
+            "query": "Flight VN123 status please",
+            "expected": {
+                "should_contain": [
+                    "VN123"
+                ],
+                "language": "english_or_bilingual",
+                "expected_tools": [
+                    "search_flight"
+                ]
+            },
+            "priority": "medium",
+            "category": "language"
+        },
+        {
+            "id": "FQ008",
+            "query": "VN456 bị delay bao lâu và tại sao?",
+            "expected": {
+                "should_contain": [
+                    "VN456",
+                    "45"
+                ],
+                "should_contain_any": [
+                    "weather",
+                    "thời tiết"
+                ],
+                "expected_tools": [
+                    "search_flight"
+                ]
+            },
+            "priority": "high",
+            "category": "detail_query"
         }
     ]
 }
