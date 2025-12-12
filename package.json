@@ -13,6 +13,7 @@
         "test:watch": "jest --config tests/__config__/jest.config.js --watch"
     },
     "devDependencies": {
+        "@faker-js/faker": "^10.1.0",
         "@playwright/test": "^1.40.0",
         "@types/node": "^20.0.0",
         "axios": "^1.6.0",
@@ -22,5 +23,8 @@
         "supertest": "^6.3.0",
         "ts-node": "^10.9.0",
         "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "openai": "^6.10.0"
     }
 }

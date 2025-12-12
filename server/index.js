@@ -309,6 +309,7 @@ app.get('/api/health', async (req, res) => {
 app.post('/api/chat', async (req, res) => {
   const { message, history = [] } = req.body;
   const logs = [];
+  const toolsUsed = []; // Track all tools called during this conversation
 
   if (!message || typeof message !== 'string' || !message.trim()) {
     return res.status(400).json({ error: 'Message cannot be empty' });
@@ -370,6 +371,9 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
         const toolName = toolCall.function.name;
         const toolArgs = JSON.parse(toolCall.function.arguments);
 
+        // Track tool usage
+        toolsUsed.push(toolName);
+
         // Map tool to agent
         const agentMap = {
           search_flight: 'flight',
@@ -421,6 +425,7 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
     res.json({
       success: true,
       response: assistantMessage.content,
+      tools_used: toolsUsed, // Return tools used for testing
       logs,
       usage: response.usage
     });
@@ -431,6 +436,7 @@ Example flight codes: VN123, VN456, VJ789, QH101, BL101`
     res.status(500).json({
       success: false,
       error: error.message,
+      tools_used: toolsUsed, // Return tools used even on error
       logs
     });
   }
