@@ -34,22 +34,23 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
 
       - name: Configure Docker
-        run: gcloud auth configure-docker
+        run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev
 
       - name: Build and Push Docker Image
         working-directory: ./server
         run: |
-          docker build -t gcr.io/$PROJECT_ID/$IMAGE_NAME:${{ github.sha }} .
-          docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:${{ github.sha }}
-          docker tag gcr.io/$PROJECT_ID/$IMAGE_NAME:${{ github.sha }} gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-          docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+          IMAGE_URI=asia-southeast1-docker.pkg.dev/$PROJECT_ID/flight-repo/$IMAGE_NAME
+          docker build -t $IMAGE_URI:${{ github.sha }} .
+          docker push $IMAGE_URI:${{ github.sha }}
+          docker tag $IMAGE_URI:${{ github.sha }} $IMAGE_URI:latest
+          docker push $IMAGE_URI:latest
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
         with:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.RUN_REGION }}
-          image: gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          image: asia-southeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/flight-repo/${{ env.IMAGE_NAME }}:${{ github.sha }}
           flags: '--add-cloudsql-instances=${{ secrets.GCP_SQL_INSTANCE_NAME }}'
           env_vars: |
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
