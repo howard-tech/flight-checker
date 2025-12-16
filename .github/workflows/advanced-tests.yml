@@ -36,6 +36,11 @@ jobs:
     - name: Install Dependencies
       run: npm ci
 
+    - name: Initialize Database Schema
+      run: node tests/utils/init-schema.js
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/flight_db
+
     - name: Seed Database
       run: node -e "require('./tests/utils/db-setup').resetTestDatabase()"
       env:
