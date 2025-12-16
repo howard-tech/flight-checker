@@ -22,5 +22,7 @@ module.exports = {
     },
     transformIgnorePatterns: [
         'node_modules/(?!(@faker-js)/)'
-    ]
+    ],
+    globalSetup: '<rootDir>/__config__/globalSetup.js',
+    globalTeardown: '<rootDir>/__config__/globalTeardown.js'
 };

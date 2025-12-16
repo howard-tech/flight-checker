@@ -48,6 +48,15 @@ jobs:
 
     - name: Run Basic Tests
       run: npm run test:api
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/flight_db
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_NAME: flight_db
+        DB_USER: postgres
+        DB_PASSWORD: postgres
 
     - name: Run Advanced Tests
       run: npx jest --config tests/__config__/jest.advanced.config.js
