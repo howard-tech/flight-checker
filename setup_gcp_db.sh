@@ -12,6 +12,12 @@ if ! command -v gh &> /dev/null; then echo "❌ gh CLI not found."; exit 1; fi
 PROJECT_ID=$(gcloud config get-value project)
 echo "📂 Target Project: $PROJECT_ID"
 
+# 1.5 Refresh Auth if needed
+if ! gcloud auth print-access-token &>/dev/null; then
+    echo "⚠️  Token expired or not logged in. Opening login page..."
+    gcloud auth login
+fi
+
 if [ -z "$PROJECT_ID" ]; then
     echo "❌ No project set. Please run './setup_gcp.sh' first."
     exit 1
