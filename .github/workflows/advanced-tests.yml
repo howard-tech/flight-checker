@@ -34,7 +34,9 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies
-      run: npm ci
+      run: |
+        npm ci
+        cd server && npm install
 
     - name: Initialize Database Schema
       run: node tests/utils/init-schema.js
