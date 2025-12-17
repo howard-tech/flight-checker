@@ -16,16 +16,14 @@ env:
   IMAGE_NAME: flight-checker-api
 
 jobs:
-  deploy:
+  deploy-api:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Google Auth
-        id: auth
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
@@ -51,7 +49,7 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.RUN_REGION }}
           image: asia-southeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/flight-repo/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          flags: '--add-cloudsql-instances=${{ secrets.GCP_SQL_INSTANCE_NAME }}'
+          flags: '--add-cloudsql-instances=${{ secrets.GCP_SQL_INSTANCE_NAME }} --allow-unauthenticated'
           env_vars: |
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             OPENAI_MODEL=${{ vars.OPENAI_MODEL }}
@@ -60,3 +58,44 @@ jobs:
             DB_NAME=${{ secrets.DB_NAME }}
             DB_USER=${{ secrets.DB_USER }}
             DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+
+  deploy-client:
+    needs: deploy-api
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    env:
+      CLIENT_SERVICE_NAME: flight-checker-ui
+      CLIENT_IMAGE_NAME: flight-checker-ui
+      API_URL: https://flight-checker-api-xy5qvjkrra-as.a.run.app # Hardcoded stable URL
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Google Auth
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev
+
+      - name: Build and Push Docker Image
+        working-directory: ./client
+        run: |
+          IMAGE_URI=asia-southeast1-docker.pkg.dev/$PROJECT_ID/flight-repo/$CLIENT_IMAGE_NAME
+          docker build --build-arg VITE_API_URL=$API_URL -t $IMAGE_URI:${{ github.sha }} .
+          docker push $IMAGE_URI:${{ github.sha }}
+          docker tag $IMAGE_URI:${{ github.sha }} $IMAGE_URI:latest
+          docker push $IMAGE_URI:latest
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          service: ${{ env.CLIENT_SERVICE_NAME }}
+          region: ${{ env.RUN_REGION }}
+          image: asia-southeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/flight-repo/${{ env.CLIENT_IMAGE_NAME }}:${{ github.sha }}
+          flags: '--allow-unauthenticated'
