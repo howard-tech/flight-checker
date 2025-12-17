@@ -98,4 +98,4 @@ jobs:
           service: ${{ env.CLIENT_SERVICE_NAME }}
           region: ${{ env.RUN_REGION }}
           image: asia-southeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/flight-repo/${{ env.CLIENT_IMAGE_NAME }}:${{ github.sha }}
-          flags: '--allow-unauthenticated'
+          flags: '--allow-unauthenticated --port 8080'
