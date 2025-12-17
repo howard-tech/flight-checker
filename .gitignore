@@ -4,3 +4,9 @@ dist/
 .env.bak
 *.log
 .DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars

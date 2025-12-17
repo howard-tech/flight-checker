@@ -138,6 +138,25 @@ User Query: "VN456 bị delay bao lâu?"
 └───────────────┘      └───────────────┘      └───────────────┘
 ```
 
+
+### Cloud Architecture (GCP)
+
+Hệ thống được triển khai trên Google Cloud Platform với kiến trúc Serverless hiện đại:
+
+| Component | GCP Service | Chi Tiết |
+|-----------|-------------|----------|
+| **Frontend** | Cloud Run | `flight-checker-ui` - React App host trên Nginx, auto-scaling |
+| **Backend** | Cloud Run | `flight-checker-api` - Node.js App, kết nối DB qua Unix Socket |
+| **Database** | Cloud SQL | PostgreSQL 15, managed relation database |
+| **Network** | VPC & LB | HTTPS Load Balancer mặc định của Cloud Run, VPC connector (optional) |
+| **Registry** | Artifact Registry | Lưu trữ Docker Images bảo mật |
+| **IaC** | Terraform | Quản lý toàn bộ infrastructure bằng code |
+
+**Luồng kết nối:**
+1. User truy cập URL Frontend (HTTPS) -> Cloud Run Load Balancer.
+2. Frontend gọi API -> Cloud Run Service URL của Backend.
+3. Backend kết nối Database -> Cloud SQL Auth Proxy (Sidecar) -> Cloud SQL Instance.
+
 ---
 
 ## ⚡ Đặc Tính Kỹ Thuật
@@ -360,6 +379,66 @@ npm run dev
 | `DB_NAME` | Database name | `flight_db` |
 | `DB_USER` | Database user | `postgres` |
 | `DB_PASSWORD` | Database password | `postgres` |
+
+---
+
+## 🛠️ Hướng Dẫn DevOps (Terraform)
+
+Dự án sử dụng **Terraform** để tự động hóa việc khởi tạo hạ tầng (Infrastructure as Code) hỗ trợ Multi-Cloud (GCP & AWS).
+
+### 1. Cấu Trúc Terraform
+Code nằm trong thư mục `terraform/`:
+- `gcp/`: Module định nghĩa tài nguyên cho GCP (Cloud Run, Cloud SQL, AR).
+- `aws/`: Module định nghĩa tài nguyên cho AWS (App Runner, RDS, VPC).
+- `main.tf`: Root module điều phối cả 2 cloud.
+
+### 2. Yêu Cầu (Prerequisites)
+- [Terraform CLI](https://developer.hashicorp.com/terraform/downloads) (v1.0+)
+- **GCP Credentials**: Chạy `gcloud auth application-default login`
+- **AWS Credentials**: Cấu hình `aws configure` hoặc biến môi trường `AWS_ACCESS_KEY_ID`
+
+### 3. Quy Trình Deployment
+
+**Bước 1: Khởi tạo Project**
+```bash
+cd terraform
+terraform init
+```
+
+**Bước 2: Cấu hình Biến & Secrets**
+Tạo file `terraform.tfvars` trong thư mục `terraform/` (File này đã được gitignore):
+
+```hcl
+gcp_project_id = "your-project-id"   # ID project GCP của bạn
+gcp_region     = "asia-southeast1"   # Region mong muốn
+db_password    = "your-secure-pass"  # Password cho DB Admin
+openai_api_key = "sk-..."            # Key OpenAI
+```
+
+**Bước 3: Review Plan**
+Kiểm tra các tài nguyên sẽ được tạo:
+```bash
+terraform plan
+```
+
+**Bước 4: Provisioning (Tạo Hạ Tầng)**
+```bash
+terraform apply
+```
+*Gõ `yes` để xác nhận.*
+
+**Bước 5: Kết Quả**
+Sau khi chạy xong, Terraform sẽ xuất ra các endpoint:
+- `gcp_ui_url`: URL Frontend trên GCP
+- `gcp_api_url`: URL API trên GCP
+- `aws_ui_url`: URL Frontend trên AWS
+- `aws_api_url`: URL API trên AWS
+
+### 4. Xóa Hạ Tầng (Cleanup)
+```bash
+terraform destroy
+```
+*Lưu ý: Hành động này sẽ xóa toàn bộ database và services.*
 
 ---
 
