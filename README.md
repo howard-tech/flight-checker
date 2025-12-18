@@ -402,17 +402,28 @@ Code nằm trong thư mục `terraform/`:
 **Bước 1: Khởi tạo Project**
 ```bash
 cd terraform
-terraform init
+# Khởi tạo với backend (thay thế bucket name thực tế)
+terraform init -backend-config="bucket=your-existing-state-bucket"
 ```
 
 **Bước 2: Cấu hình Biến & Secrets**
-Tạo file `terraform.tfvars` trong thư mục `terraform/` (File này đã được gitignore):
 
-```hcl
-gcp_project_id = "your-project-id"   # ID project GCP của bạn
-gcp_region     = "asia-southeast1"   # Region mong muốn
-db_password    = "your-secure-pass"  # Password cho DB Admin
-openai_api_key = "sk-..."            # Key OpenAI
+⚠️ **SECURITY WARNING**: Không bao giờ commit `terraform.tfvars` lên git!
+
+**Option 1: Sử dụng terraform.tfvars (Local Development)**
+```bash
+cp terraform.tfvars.example terraform.tfvars
+# Chỉnh sửa với thông tin thực của bạn
+nano terraform.tfvars
+```
+
+**Option 2: Sử dụng Environment Variables (CI/CD)**
+```bash
+export TF_VAR_gcp_project_id="my-gcp-project"
+export TF_VAR_db_password="secure-password"
+export TF_VAR_openai_api_key="sk-..."
+export TF_VAR_environment="prod"
+terraform apply
 ```
 
 **Bước 3: Review Plan**

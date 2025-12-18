@@ -7,6 +7,10 @@ dist/
 
 # Terraform
 .terraform/
+.terraform.lock.hcl
 *.tfstate
 *.tfstate.backup
 *.tfvars
+terraform.tfvars
+terraform/.terraform/
+
